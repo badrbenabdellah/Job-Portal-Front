@@ -79,19 +79,19 @@ export const views = [
     {
         "name" : "Najlae Abarghache",
         "marks" : 5,
-        "view" : "This job portal made job search easy and quick. Recommended to all job seekers!",
+        "view" : "Found my dream job within a week! The application process was smooth.",
         "avatar" : "/View/avatar2.png"
     },
     {
         "name" : "Bilal CHEKHCHOU",
         "marks" : 5,
-        "view" : "This job portal made job search easy and quick. Recommended to all job seekers!",
+        "view" : "I secured a job offer within days of applying. Exceptional user experience and support.",
         "avatar" : "/View/avatar3.png"
     },
     {
         "name" : "Fatima zahra ARICHI",
         "marks" : 5,
-        "view" : "This job portal made job search easy and quick. Recommended to all job seekers!",
+        "view" : "Highly efficient job portal with excellent resources. Helped me land a great position.",
         "avatar" : "/View/avatar1.png"
     },
 ]
