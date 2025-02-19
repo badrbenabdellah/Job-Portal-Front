@@ -54,4 +54,44 @@ export const jobCategory = [
 
 ];
 
+export const works = [
+    {
+        "name" : "Build your resume",
+        "desc" : "Create a standout resume with your skills."
+    },
+    {
+        "name" : "Apply for Job",
+        "desc" : "Find and apply for jobs that match your skills."
+    },
+    {
+        "name" : "Get Hired",
+        "desc" : "Connect with employers and start your new job."
+    },
+]
 
+export const views = [
+    {
+        "name" : "El Mahdi El Ateki Ganoni ",
+        "marks" : 5,
+        "view" : "This job portal made job search easy and quick. Recommended to all job seekers!",
+        "avatar" : "/View/avatar.png"
+    },
+    {
+        "name" : "Najlae Abarghache",
+        "marks" : 5,
+        "view" : "This job portal made job search easy and quick. Recommended to all job seekers!",
+        "avatar" : "/View/avatar2.png"
+    },
+    {
+        "name" : "Bilal CHEKHCHOU",
+        "marks" : 5,
+        "view" : "This job portal made job search easy and quick. Recommended to all job seekers!",
+        "avatar" : "/View/avatar3.png"
+    },
+    {
+        "name" : "Fatima zahra ARICHI",
+        "marks" : 5,
+        "view" : "This job portal made job search easy and quick. Recommended to all job seekers!",
+        "avatar" : "/View/avatar1.png"
+    },
+]
