@@ -1,6 +1,6 @@
-export const companies = ['Google', 'Amazon', 'Figma', 'Netflix', 'Meta', 'Microsoft', 'Pinterest', 'Slack', 'Spotify', 'Oracle', 'Walmart'];
+const companies = ['Google', 'Amazon', 'Figma', 'Netflix', 'Meta', 'Microsoft', 'Pinterest', 'Slack', 'Spotify', 'Oracle', 'Walmart'];
 
-export const jobCategory = [
+const jobCategory = [
     {
         name: "Human Resource",
         desc: "Recruit, manage, and support company employees",
@@ -54,7 +54,7 @@ export const jobCategory = [
 
 ];
 
-export const works = [
+const works = [
     {
         "name" : "Build your resume",
         "desc" : "Create a standout resume with your skills."
@@ -69,7 +69,7 @@ export const works = [
     },
 ]
 
-export const views = [
+const views = [
     {
         "name" : "El Mahdi El Ateki Ganoni ",
         "marks" : 5,
@@ -95,3 +95,11 @@ export const views = [
         "avatar" : "/View/avatar1.png"
     },
 ]
+
+const footerLinks = [
+    {title : "Product", links : ["Find Job", "Find Company", "Find Employee"]},
+    {title : "Company", links : ["About us", "Contact us", "Privacy Policy", "Terms & Conditions"]},
+    {title : "Support", links : ["Help & Support", "Feedback", "FAQs"]},
+]
+
+export {companies, jobCategory, works, views, footerLinks}
