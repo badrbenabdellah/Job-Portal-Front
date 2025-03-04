@@ -7,7 +7,8 @@ import CertifiCard from './CertifiCard'
 const Profile = (props:any) => {
   return (
     <div className='w-2/3'>
-        <div className='relative'>
+      <div className=''>
+      <div className='relative'>
             <img className='rounded-t-2xl' src='/Profile/banner.jpeg' alt='' />
             <img className='w-48 h-48 rounded-full -bottom-1/3 absolute left-3 border-mine-shaft-950 border-8' src='/avatar1.png' alt='' />
         </div>
@@ -50,6 +51,7 @@ const Profile = (props:any) => {
             }
           </div>
         </div>
+      </div>
     </div>
   )
 }
