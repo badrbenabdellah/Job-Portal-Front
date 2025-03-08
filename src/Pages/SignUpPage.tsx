@@ -1,23 +1,24 @@
 import React from 'react'
-import Login from '../SignUpLogin/Login'
 import SignUp from '../SignUpLogin/SignUp'
-import { Divider } from '@mantine/core'
 import { IconAnchor } from '@tabler/icons-react'
+import { useLocation } from 'react-router-dom';
+import Login from '../SignUpLogin/Login';
 
 const SignUpPage = () => {
+    const location = useLocation();
   return (
-    <div className="min-h-[90vh] bg-mine-shaft-950 font-['poppins']">
-        <Divider size="xs" mx="md" />
-        <div className='w-[100vw] h-[100vh] flex'>
-            <div className='w-1/2 rounded-r-[200px] h-full bg-mine-shaft-900 flex flex-col items-center justify-center'>
+    <div className="min-h-[90vh] bg-mine-shaft-950 font-['poppins'] overflow-hidden">
+        <div className={`w-[100vw] h-[100vh] transition-all ease-in-out duration-100 flex [&>*]:flex-shrink-0 ${location.pathname === '/signup'? '-translate-x-1/2':'-translate-x-0'}`}>
+            <Login />
+            <div className={`w-1/2 h-full transition-all duration-1000 ease-in-out ${location.pathname=="/signup"?"rounded-r-[200px]":"rounded-l-[200px]"} bg-mine-shaft-900 flex flex-col items-center justify-center gap-5`}>
                 <div className='flex gap-1 items-center text-bright-sun-400'>
                     <IconAnchor className='w-16 h-16' stroke={2.5} />
                     <div className='text-6xl font-semibold'> FJobs </div> 
                 </div>
                 <div className='text-2xl text-mine-shaft-200 font-semibold'>Find the made for you</div>
             </div>
+            <SignUp />
         </div>
-        <SignUp />
     </div>
   )
 }

@@ -38,6 +38,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/signup' element={<SignUpPage />}/>
+          <Route path='/login' element={<SignUpPage />}/>
           <Route path='/find-jobs' element={<FindJobs />}/>
           <Route path='/jobs' element={<JobDescPage />}/>
           <Route path='/apply-job' element={<ApplyJobPage />}/>
