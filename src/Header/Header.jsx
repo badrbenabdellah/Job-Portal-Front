@@ -2,6 +2,7 @@ import { IconAnchor, IconSettings , IconBell } from '@tabler/icons-react';
 import { Avatar, Indicator } from '@mantine/core';
 import NavLinkList from './NavLinkList';
 import { useLocation } from 'react-router-dom';
+import ProfileMenu from './ProfileMenu';
 
 
 const Header = () => {
@@ -15,10 +16,7 @@ const Header = () => {
         </div>
         {NavLinkList()}
         <div className='flex gap-3 items-center'>
-            <div className="flex items-center gap-2">
-                <div>Badr Benabdellah</div>
-                <Avatar src="/avatar.png" alt="it's me" />
-            </div>
+            <ProfileMenu />
             <div className='bg-mine-shaft-900 p-1.5 rounded-full'>
                 <IconSettings stroke={2.5} />
             </div>
