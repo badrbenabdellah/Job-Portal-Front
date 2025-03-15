@@ -7,8 +7,8 @@ import '@mantine/dates/styles.css';
 import HomePage from './Pages/HomePages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import FindJobs from './Pages/FindJobs';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
+//import Header from './Header/Header';
+//import Footer from './Footer/Footer';
 import FindTalentPage from './Pages/FindTalentPage';
 import TalentProfilePage from './Pages/TalentProfilePage';
 import PostJobPages from './Pages/PostJobPages';
@@ -19,6 +19,8 @@ import PostedJobPage from './Pages/PostedJobPage';
 import JobHistoryPage from './Pages/JobHistoryPage';
 import SignUpPage from './Pages/SignUpPage';
 import ProfilePage from './Pages/ProfilePage';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   const theme = createTheme({

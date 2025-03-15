@@ -3,8 +3,8 @@ import { IconArrowLeft } from '@tabler/icons-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { profile } from '../Data/TalentData'
-import Profile from '../TalentProfile/Profile'
-import RecommendTalent from '../TalentProfile/RecommendTalent'
+import Profile from '../Components/Profile/Profile'
+import RecommendTalent from '../Components/TalentProfile/RecommendTalent'
 
 const TalentProfilePage = () => {
   return (

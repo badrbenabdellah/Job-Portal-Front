@@ -1,6 +1,4 @@
-import { Divider } from '@mantine/core'
-import React from 'react'
-import PostJob from '../PostJob/PostJob'
+import PostJob from "../Components/PostJob/PostJob"
 
 const PostJobPages = () => {
   return (
