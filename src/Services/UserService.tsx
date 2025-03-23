@@ -13,4 +13,22 @@ const loginUser = async(login:any)=>{
     .catch(error=>{throw error;});
 }
 
-export {registerUser, loginUser};
+const sendOtp = async (email:any) => {
+    return axios.post(`${base_url}sendOtp`, email)
+        .then(result => result.data)
+        .catch(error => {throw error;});
+}
+
+const verifyOtp = async (email:any, otp:any) => {
+    return axios.post(`${base_url}/verifyOtp/{email}/{otp}`)
+        .then(result => result.data)
+        .catch(error => {throw error;});
+}
+
+const changePassword = async (email:string, password:string) => {
+    return axios.post(`${base_url}/changePassword`, {email, password})
+        .then(result => result.data)
+        .catch(error => {throw error;});
+}
+
+export {registerUser, loginUser, sendOtp, verifyOtp, changePassword};
