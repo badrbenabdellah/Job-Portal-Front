@@ -22,14 +22,14 @@ const sendOtp = async (email:string) => {
 
 
 const verifyOtp = async (email: string, otp: string) => {
-    return axios.post(`${base_url}verifyOtp/${email}/${otp}`)
+    return axios.get(`${base_url}verifyOtp/${email}/${otp}`)
         .then(result => result.data)
         .catch(error => {throw error;});
 }
 
 
 const changePassword = async (email:string, password:string) => {
-    return axios.post(`${base_url}/changePassword`, {email, password})
+    return axios.post(`${base_url}changePassword`, {email, password})
         .then(result => result.data)
         .catch(error => {throw error;});
 }
