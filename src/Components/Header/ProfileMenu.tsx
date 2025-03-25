@@ -10,15 +10,22 @@ import {
 } from '@tabler/icons-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { removeUser } from '../../Slices/UserSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ProfileMenu = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state:any)=>state.user);
   const [checked, setChecked] = useState(false);
   const [opened, setOpened] = useState(false);
+  const handleLogout = () => {
+    dispatch(removeUser());
+  }
   return (
     <Menu shadow="md" width={200} opened={opened} onChange={setOpened}>
       <Menu.Target>
         <div className="flex cursor-pointer items-center gap-2">
-          <div>Badr Benabdellah</div>
+          <div>{user.name}</div>
             <Avatar src="/avatar.png" alt="it's me" />
           </div>
       </Menu.Target>
@@ -54,7 +61,7 @@ const ProfileMenu = () => {
         </Menu.Item>
 
         <Menu.Divider />
-        <Menu.Item
+        <Menu.Item onClick={handleLogout}
           color="red"
           leftSection={<IconLogout2 style={{width: rem(16), height: rem(16)}} />}
         >
@@ -66,3 +73,7 @@ const ProfileMenu = () => {
 }
 
 export default ProfileMenu;
+
+function dispatch(arg0: { payload: undefined; type: "user/removeUser"; }) {
+  throw new Error('Function not implemented.');
+}
