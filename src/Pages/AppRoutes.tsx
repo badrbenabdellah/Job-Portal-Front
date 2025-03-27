@@ -21,27 +21,27 @@ const AppRoutes=() => {
     const user = useSelector((state:any)=>state.user);
     return (
         <BrowserRouter>
-      <div className='relative'> 
-        <Divider size="xs" />
-        <Header />
-        <Routes>
-          <Route path='/signup' element={user?<Navigate to="/" />:<SignUpPage />}/>
-          <Route path='/login' element={user?<Navigate to="/" />:<SignUpPage />}/>
-          <Route path='/profile' element={<ProfilePage />}/>
-          <Route path='/find-jobs' element={<FindJobs />}/>
-          <Route path='/jobs' element={<JobDescPage />}/>
-          <Route path='/apply-job' element={<ApplyJobPage />}/>
-          <Route path='/find-talent' element={<FindTalentPage />}/>
-          <Route path='/company' element={<CompanyPage />}/>
-          <Route path='/posted-job' element={<PostedJobPage />}/>
-          <Route path='/job-history' element={<JobHistoryPage />}/>
-          <Route path='/talent-profile' element={<TalentProfilePage />}/>
-          <Route path='/post-job' element={<PostJobPages />}/>
-          <Route path='*' element={<HomePage />}/>
-        </Routes>
-        <Footer />
-      </div>
-      </BrowserRouter>
+            <div className='relative'> 
+                <Divider size="xs" />
+                <Header />
+                <Routes>
+                    <Route path='/signup' element={user?<Navigate to="/" />:<SignUpPage />}/>
+                    <Route path='/login' element={user?<Navigate to="/" />:<SignUpPage />}/>
+                    <Route path='/profile' element={<ProfilePage />}/>
+                    <Route path='/find-jobs' element={<FindJobs />}/>
+                    <Route path='/jobs' element={<JobDescPage />}/>
+                    <Route path='/apply-job' element={<ApplyJobPage />}/>
+                    <Route path='/find-talent' element={<FindTalentPage />}/>
+                    <Route path='/company' element={<CompanyPage />}/>
+                    <Route path='/posted-job' element={<PostedJobPage />}/>
+                    <Route path='/job-history' element={<JobHistoryPage />}/>
+                    <Route path='/talent-profile' element={<TalentProfilePage />}/>
+                    <Route path='/post-job' element={<PostJobPages />}/>
+                    <Route path='*' element={<HomePage />}/>
+                </Routes>
+                <Footer />
+            </div>
+        </BrowserRouter>
     )
 }
 
