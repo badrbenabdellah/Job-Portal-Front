@@ -27,7 +27,6 @@ const Profile = (props:any) => {
     setEdit(newEdit);
   }
   useEffect(() => {
-    console.log(profile);
     getProfile(user.id).then((data:any) => {
       dispatch(setProfile(data));
     }).catch((error:any) => {
@@ -36,16 +35,38 @@ const Profile = (props:any) => {
   }, [])
   return (
     <div className='w-4/5 mx-auto'>
-      <div className=''>
       <div className='relative'>
-            <img className='rounded-t-2xl' src='/Profile/banner.jpeg' alt='' />
-            <div>
-              <Indicator className="[&_.mantine-Indicator-indicator]:!border-4[&_img]:hover:opcaity-80" autoContrast inline offset={30} label={<IconPencil className='w-4/5 h-4/5' />} size={45} position='bottom-end' color='brightSun.4' withBorder>
-              <Avatar className="!w-48 !h-48 border-mine-shaft-950 border-8 rounded-full" src="/Avatar.png" alt='' />
-              <FileInput className='absolute bottom-2 right-2 z-[201] w-12 [&_div]:text-transparent' variant='unstyled' size='lg' radius="xl" accept="image/png,image/jpeg" />
-              </Indicator>
-            </div>
+        {/* Bannière avec photo de profil superposée */}
+        <img className='rounded-t-2xl w-full h-48 object-cover' src='/Profile/banner.jpeg' alt='Bannière' />
+        
+        {/* Photo de profil positionnée sur la bannière */}
+        <div className='absolute -bottom-1/3 left-3'>
+          <Indicator 
+            className="[&_.mantine-Indicator-indicator]:!border-4 [&_img]:hover:opacity-80" 
+            inline 
+            offset={30} 
+            label={<IconPencil className='w-4/5 h-4/5' />} 
+            size={45} 
+            position='bottom-end' 
+            color='brightSun.4' 
+            withBorder
+            autoContrast 
+          >
+            <Avatar 
+              className="!w-48 !h-48 border-mine-shaft-950 border-8 rounded-full" 
+              src="/Avatar.png" 
+              alt="Photo de profil" 
+            />
+            <FileInput 
+              className='absolute bottom-1 right-1 z-[201] w-10 [&_div]:text-transparent' 
+              variant='unstyled' 
+              size='md' 
+              radius="xl" 
+              accept="image/png,image/jpeg" 
+            />
+          </Indicator>
         </div>
+      </div>
         <div className='px-3 mt-16'>
             <Info />
           
@@ -58,10 +79,9 @@ const Profile = (props:any) => {
           </div>
           {
             edit[1]?<Textarea value={about} placeholder='Enter about youself...' autosize minRows={3} onChange={(event) => setAbout(event.currentTarget.value)}/>:
-            <div className='text-sm text-mine-shaft-300 text-justify'>{profile.about}</div>
+            <div className='text-sm text-mine-shaft-300 text-justify'>{profile?.about}</div>
           }
           
-        </div>
         </div>
         <Divider mx="xs" my="xl" />
         <div className='px-3'>
@@ -93,7 +113,7 @@ const Profile = (props:any) => {
           </div>
           <div className='flex flex-col gap-8'>
             {
-              profile?.experience?.map((exp:any, index:number ) => <ExpCard key={index } {...exp} edit={edit[3]} />)
+              profile?.experiences?.map((exp:any, index:number ) => <ExpCard key={index } {...exp} edit={edit[3]} />)
             }
             {addExp &&<ExpInput add setEdit={setAddExp}/>}
           </div>
@@ -121,6 +141,7 @@ const Profile = (props:any) => {
         </div>
       </div>
     </div>
+    
   )
 }
 
