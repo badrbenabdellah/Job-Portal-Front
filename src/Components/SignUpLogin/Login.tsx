@@ -1,10 +1,9 @@
-import { Anchor, Button, Checkbox, LoadingOverlay, PasswordInput, rem, TextInput } from '@mantine/core';
-import { IconAt, IconCheck, IconLock, IconX } from '@tabler/icons-react';
+import { Button, LoadingOverlay, PasswordInput, rem, TextInput } from '@mantine/core';
+import { IconAt, IconLock, } from '@tabler/icons-react';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../Services/UserService';
 import { loginValidation } from '../../Services/FormValidation';
-import { notifications } from '@mantine/notifications';
 import { useDisclosure } from '@mantine/hooks';
 import ResetPassword from './ResetPassword';
 import { useDispatch } from 'react-redux';
@@ -40,7 +39,6 @@ const Login = () => {
         if(valid){
             setLoading(true);
             loginUser(data).then((res)=>{
-                console.log(res);
                 successNotification("Login Successful", "Redirecting to home page...");
                   setTimeout(()=>{
                     setLoading(false);
@@ -49,7 +47,6 @@ const Login = () => {
                   }, 4000)
             }).catch((err)=>{
                 setLoading(false);
-                console.log(err);
                 errorNotification("Login Failed",err.response.data.errorMessage);
         });
     }   

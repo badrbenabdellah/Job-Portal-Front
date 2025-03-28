@@ -25,14 +25,12 @@ const ResetPassword = (props:any) => {
     const handleSendOtp =() => {
         setOtpSending(true);
         sendOtp(email).then((res) => {
-            console.log(res);
             successNotification("OTP Sent Successfully", "Enter OTP to reset.")
             setOtpSent(true);
             setOtpSending(false);
             setResendLoader(true);
             interval.start();
         }).catch((err) => {
-            console.log(err);
             setOtpSending(false);
             errorNotification("OTP Sending Failed", err.response.data.errorMessage)
         })
@@ -40,11 +38,9 @@ const ResetPassword = (props:any) => {
 
     const handleVerifyOTP =(otp:string) => {
         verifyOtp(email, otp).then((res) => {
-            console.log(res);
             successNotification("OTP Verified.", "Enter new Password.")
             setVerified(true);
         }).catch((err) => {
-            console.log(err);
             errorNotification("OTP Verification Failed", err.response.data.errorMessage)
         })
     }
@@ -64,11 +60,9 @@ const ResetPassword = (props:any) => {
 
     const handleResetPassword =() => {
         changePassword(email, password).then((res) => {
-            console.log(res);
             successNotification("Password Changed", "Login with new password.")
             props.close();
         }).catch((err) => {
-            console.log(err);
             errorNotification("Password Reset Failed.", err.response.data.errorMessage);
         })
     }

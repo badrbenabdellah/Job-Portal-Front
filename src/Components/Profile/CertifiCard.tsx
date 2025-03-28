@@ -1,6 +1,5 @@
 import { ActionIcon } from '@mantine/core';
-import { IconDeviceFloppy, IconPencil, IconTrash } from '@tabler/icons-react';
-import React from 'react'
+import { IconTrash } from '@tabler/icons-react';
 import { formatDate } from '../../Services/Utilities';
 
 const CertifiCard = (props:any) => {

@@ -1,10 +1,9 @@
 import { Anchor, Button, Checkbox, Group, Radio, PasswordInput, rem, TextInput, LoadingOverlay } from '@mantine/core';
-import { IconAt, IconCheck, IconLock, IconX } from '@tabler/icons-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { IconAt, IconLock} from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { registerUser } from '../../Services/UserService';
 //import signupValidation from '../../Services/FormValidation';
-import { notifications } from '@mantine/notifications';
 import { signupValidation } from '../../Services/FormValidation';
 import { errorNotification, successNotification } from '../../Services/NotificationService';
 
@@ -18,7 +17,6 @@ const form= {
 }
 
 const SignUp = () => {
-  const [value, setValue] = useState('react');
   const [data,setData] = useState<{[key:string]:string}>(form);
   const [formError, setFormError] = useState<{[key:string]:string}>(form);
   const navigate = useNavigate();
@@ -55,7 +53,6 @@ const SignUp = () => {
     if(valid===true){
       setLoading(true);
       registerUser(data).then((res)=>{
-        console.log(res);
         setData(form);
         successNotification('Registered Successfully','Redirecting to login page...');
         setTimeout(()=>{
@@ -64,7 +61,6 @@ const SignUp = () => {
         }, 4000)
       }).catch((err)=>{
         setLoading(false);
-        console.log(err);
         errorNotification('Registration Failed',err.response.data.errorMessage);
       });
     }
