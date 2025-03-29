@@ -1,5 +1,5 @@
-import { Anchor, Button, Checkbox, Textarea } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { Button, Checkbox, Textarea } from '@mantine/core';
+import { useEffect } from 'react';
 import { MonthPickerInput } from '@mantine/dates';
 import SelectInput from './SelectInput';
 import { fields } from '../../Data/Profile';
