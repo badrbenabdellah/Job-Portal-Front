@@ -19,7 +19,7 @@ const CertiInput = (props:any) => {
             <TextInput label="Certificate ID" withAsterisk placeholder='Enter ID'/>
         </div>
         <div className='flex gap-5'>
-            <Button onClick={()=>props.setEdit(false)} color='brightSun.4' variant='outline'>Save</Button>
+            <Button onClick={()=>props.setEdit(false)} color='green.8' variant='light'>Save</Button>
             <Button onClick={()=>props.setEdit(false)} color='red.8' variant='light'>Cancel</Button>
         </div>
     </div>
