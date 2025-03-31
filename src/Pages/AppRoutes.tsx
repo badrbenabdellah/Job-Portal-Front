@@ -29,10 +29,10 @@ const AppRoutes=() => {
                     <Route path='/login' element={user?<Navigate to="/" />:<SignUpPage />}/>
                     <Route path='/profile' element={<ProfilePage />}/>
                     <Route path='/find-jobs' element={<FindJobs />}/>
-                    <Route path='/jobs' element={<JobDescPage />}/>
-                    <Route path='/apply-job' element={<ApplyJobPage />}/>
+                    <Route path='/jobs/:id' element={<JobDescPage />}/>
+                    <Route path='/apply-job/:id' element={<ApplyJobPage />}/>
                     <Route path='/find-talent' element={<FindTalentPage />}/>
-                    <Route path='/company' element={<CompanyPage />}/>
+                    <Route path='/company/:name' element={<CompanyPage />}/>
                     <Route path='/posted-job' element={<PostedJobPage />}/>
                     <Route path='/job-history' element={<JobHistoryPage />}/>
                     <Route path='/talent-profile' element={<TalentProfilePage />}/>
