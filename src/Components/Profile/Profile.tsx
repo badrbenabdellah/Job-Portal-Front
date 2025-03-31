@@ -1,8 +1,6 @@
-import { ActionIcon, Avatar, Divider, FileInput, Indicator, Overlay, TagsInput, Textarea } from '@mantine/core'
-import { IconDeviceFloppy, IconEdit, IconPencil, IconPlus } from '@tabler/icons-react'
-import { useEffect } from 'react'
+import { Avatar, Divider, FileInput, Overlay } from '@mantine/core'
+import { IconEdit } from '@tabler/icons-react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProfile } from '../../Services/ProfileService'
 import Info from './Info'
 import { setProfile } from '../../Slices/ProfileSlice'
 import About from './About'
@@ -11,6 +9,7 @@ import Experiences from './Experiences'
 import Certificate from './Certification'
 import { useHover } from '@mantine/hooks'
 import { successNotification } from '../../Services/NotificationService'
+import { getBase64 } from '../../Services/Utilities'
 
 const Profile = (props:any) => {
   const dispatch = useDispatch();
@@ -23,14 +22,7 @@ const Profile = (props:any) => {
     successNotification("Success", "Profile Picture Updated Successfully");
 
   }
-  const getBase64=(file:any) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
-  }
+  
   return (
     <div className='w-4/5 mx-auto'>
       <div className='relative'>

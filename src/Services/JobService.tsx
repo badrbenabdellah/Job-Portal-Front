@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { error } from 'console';
 const base_url = "http://localhost:8080/jobs/"
 
 const postJob = async(job:any)=>{
@@ -19,4 +20,10 @@ const getJob = async(id:any)=>{
         .catch(error=>{throw error;});
 }
 
-export { postJob, getAllJobs, getJob };
+const ApplyJob = async (id:any, applicant:any)=>{
+    return axios.post(`${base_url}apply/${id}`, applicant)
+        .then(result => result.data)
+        .catch(error =>{throw error;});
+}
+
+export { postJob, getAllJobs, getJob, ApplyJob };
