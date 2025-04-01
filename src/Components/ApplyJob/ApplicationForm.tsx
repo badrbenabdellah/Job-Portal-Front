@@ -2,10 +2,15 @@ import { Button, FileInput, LoadingOverlay, NumberInput, Textarea, TextInput } f
 import { isNotEmpty, useForm } from '@mantine/form';
 import { IconPaperclip } from '@tabler/icons-react'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getBase64 } from '../../Services/Utilities';
+import { ApplyJob } from '../../Services/JobService';
+import { errorNotification, successNotification } from '../../Services/NotificationService';
+import { useSelector } from 'react-redux';
 
 const ApplicationForm = () => {
+    const {id} = useParams();
+    const user = useSelector((state:any)=>state.user);
     const [preview, setPreview] = useState(false);
     const [submit, setSubmit] = useState(false);
     const navigate = useNavigate();
@@ -18,8 +23,15 @@ const ApplicationForm = () => {
     const handleSubmit = async() => {
         setSubmit(true);
         let resume:any = await getBase64(form.getValues().resume);
-        let applicant = {...form.getValues(), resume:resume.split(','[1])};
-        
+        let applicant = {...form.getValues(), applicantId:user.id ,resume:resume.split(',')[1]};
+        ApplyJob(id, applicant).then((res) => {
+            setSubmit(false);
+            successNotification("Success", "Application Submited Successfully")
+            navigate("/job-history");
+        }).catch((err) => {
+            setSubmit(false);
+            errorNotification("Error", err.response.data.errorMessage);
+        })
     }
     const form = useForm({
         mode : 'controlled',
