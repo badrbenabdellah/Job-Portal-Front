@@ -50,7 +50,7 @@ const JobDesc = (props:any) => {
                 </Link>
             }
             {
-                applied && <Button color='green.8' size='sm' variant='light'>Applied</Button>
+                !props.edit && applied && <Button color='green.8' size='sm' variant='light'>Applied</Button>
             }
             {props.edit?<Button color='red.5' size='sm' variant='outline'>Delete</Button>:
             profile.savedJobs?.includes(props.id)?
