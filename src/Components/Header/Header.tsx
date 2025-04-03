@@ -13,12 +13,16 @@ const Header = () => {
     const dispatch = useDispatch();
     const user = useSelector((state:any) => state.user);
     useEffect(() => {
-        getProfile(user.id).then((data:any) => {
-        dispatch(setProfile(data));
-        }).catch((error:any) => {
-        console.log(error);});
-    
-    }, [])
+        if (user && user.id) {
+            getProfile(user.id)
+                .then((data: any) => {
+                    dispatch(setProfile(data));
+                })
+                .catch((error: any) => {
+                    console.log(error);
+                });
+        }
+    }, [user]);
     const location = useLocation();
   return (
     location.pathname != "/signup" && location.pathname != "/login"?
@@ -29,7 +33,7 @@ const Header = () => {
         </div>
         {NavLinkList()}
         <div className='flex gap-3 items-center'>
-            {user?<ProfileMenu />:<Link to="/login">
+            {user && user.id?<ProfileMenu />:<Link to="/login">
             <Button variant="subtle" color="brightSun.4">Login</Button>
             </Link>}
             {/*<div className='bg-mine-shaft-900 p-1.5 rounded-full'>

@@ -29,4 +29,5 @@ const loginValidation = (name:String, value:string) => {
     }
 }
 
-export {signupValidation , loginValidation} ;
+
+export { signupValidation , loginValidation } ;

@@ -1,20 +1,29 @@
 import { Button, Divider } from '@mantine/core'
 import { IconArrowLeft } from '@tabler/icons-react'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { profile } from '../Data/TalentData'
 import Profile from '../Components/Profile/Profile'
 import RecommendTalent from '../Components/TalentProfile/RecommendTalent'
+import { getAllProfiles } from '../Services/ProfileService'
 
 const TalentProfilePage = () => {
+  const navigate = useNavigate();
+  const [talents, setTalents] = useState<any[]>([]);
+  useEffect(() => {
+    getAllProfiles().then((res) => {
+      setTalents(res);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, [])
   return (
     <div className="min-h-[90vh] bg-mine-shaft-950 font-['poppins'] p-4">
-        <Link className='my-5 inline-block' to="/find-talent">
-            <Button leftSection={<IconArrowLeft size={20} />} color='brightSun.4' variant='light'>Back</Button>
-        </Link>
+      <Divider size="xs" mx="md" />
+            <Button onClick={()=>navigate(-1)} color='brightSun.4' my="sm" variant='light' leftSection={<IconArrowLeft size={20} />}>Back</Button>
         <div className='flex gap-5'>
           <Profile {...profile} />
-          <RecommendTalent />
+          <RecommendTalent talents={talents} />
         </div>
     </div>
   )
