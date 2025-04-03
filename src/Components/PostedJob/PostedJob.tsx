@@ -21,22 +21,16 @@ const PostedJob = (props:any) => {
                     <Tabs.Tab value="DRAFT">Draft 
                         [{props.jobList?.filter((job:any)=>job?.jobStatus=="DRAFT").length}]
                     </Tabs.Tab>
+                    <Tabs.Tab value="CLOSED">Closed
+                        [{props.jobList?.filter((job:any)=>job?.jobStatus=="CLOSED").length}]
+                    </Tabs.Tab>
                 </Tabs.List>
-            <Tabs.Panel value="ACTIVE">
-                <div className='flex flex-col flex-wrap gap-5 mt-5'>
-                    {
-                        props.jobList?.filter((job:any) => job?.jobStatus == activeTab).map((item:any, index:any)=><PostedJobCard key={index} {...item} />)
-                    }
-                </div>
-            </Tabs.Panel>
-            <Tabs.Panel value="DRAFT">
-                <div className='flex flex-col flex-wrap gap-5 mt-5'>
-                    {
-                        props.jobList?.filter((job:any)=>job?.jobStatus==activeTab).map((item:any, index:any)=><PostedJobCard key={index} {...item} />)
-                    }
-                </div>
-            </Tabs.Panel>
             </Tabs>
+        </div>
+        <div className='flex flex-col flex-wrap gap-5 mt-5'>
+            {
+                props.jobList?.filter((job:any)=>job?.jobStatus==activeTab).map((item:any, index:any)=><PostedJobCard key={index} {...item} />)
+            }
         </div>
     </div>
   )
