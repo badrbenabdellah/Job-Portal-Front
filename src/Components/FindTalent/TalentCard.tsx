@@ -50,7 +50,7 @@ const TalentCard = (props:any) => {
                     <Avatar size="lg" src={profile?.picture?`data:image/jpeg;base64,${profile?.picture}`:"/Avatar.png"} alt='' />
                 </div>
                 <div>
-                    <div className='font-semibold text-lg'>{props.name}</div>
+                    <div className='font-semibold text-lg'>{profile?.name}</div>
                     <div className='text-sm text-mine-shaft-300'>{profile?.jobTitle} &bull; {profile?.company}</div>
                 </div>
             </div>
@@ -68,8 +68,8 @@ const TalentCard = (props:any) => {
                 <IconCalendarMonth stroke={1.5} />Interview: {formatInterviewTime(props.interviewTime)} 
             </div>:
             <div className='flex justify-between'>
-                <div className='font-semibold text-mine-shaft-200'>
-                    23K&#8364;  {props.expectedCtc}
+                <div className='text-mine-shaft-300'>
+                    Exp : {props.totalExp?props.totalExp:1} Years
                 </div>
                 <div className='flex gap-1 text-xs text-mine-shaft-400 items-center'>
                     <IconMapPin className='h-5 w-5' stroke={1.5}/> {profile?.location}
