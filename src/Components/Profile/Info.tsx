@@ -1,5 +1,5 @@
-import { ActionIcon } from "@mantine/core";
-import { IconBriefcase, IconCheck, IconDeviceFloppy, IconPencil, IconX } from "@tabler/icons-react";
+import { ActionIcon, NumberInput } from "@mantine/core";
+import { IconBriefcase, IconCheck, IconDeviceFloppy, IconMapPin, IconPencil, IconX } from "@tabler/icons-react";
 import SelectInput from "./SelectInput";
 import { fields } from "../../Data/Profile";
 import { useState } from "react";
@@ -17,13 +17,19 @@ const Info = () => {
     const handleClick = () => {
         if(!edit){
             setEdit(true);
-            form.setValues({jobtitle: profile.jobTitle, company: profile.company, location: profile.location});
+            form.setValues({'jobtitle': profile.jobTitle, 'company': profile.company, 'location': profile.location, 'totalExp': profile.totalExp});
         }
         else setEdit(false);   
     }
     const form = useForm({
         mode: 'controlled',
-        initialValues: { jobtitle: '', company: '', location: '' },
+        validateInputOnChange: true,
+        initialValues: { 
+            jobtitle: '', 
+            company: '', 
+            location: '',
+            totalExp: 1
+        },
     });
 
     const handleSave = () => {
@@ -49,15 +55,23 @@ const Info = () => {
             </div>
                 {
                     edit?<><div className='flex gap-10 [&>*]:w-1/2 my-3'>
-                        <SelectInput form={form} name="jobTitle" {...select[0]}/>
-                        <SelectInput form={form} name="company" {...select[1]}/>
+                        <SelectInput label="Job Title" form={form} name="jobTitle" {...select[0]}/>
+                        <SelectInput label="Company" form={form} name="company" {...select[1]}/>
                     </div>
-                    <SelectInput form={form} name="location" {...select[2]}/></>:
+                    <div className='flex gap-10 [&>*]:w-1/2 my-3'>
+                        <SelectInput label="Location" form={form} name="experience" {...select[2]}/>
+                        <NumberInput label="Expereince" withAsterisk hideControls clampBehavior="strict" min={1} max={50} {...form.getInputProps('totalExp')}/>
+                    </div>
+                    </>:
                     <>
                         <div className='text-xl flex gap-1 items-center'> <IconBriefcase className='h-5 w-5' stroke={1.5}/> {profile.jobTitle} &bull; {profile.company}</div>
                     <div className='text-lg flex gap-1 text-mine-shaft-300 items-center'>
-                        <IconPencil className='h-5 w-5' stroke={1.5} /> {profile.location}
-                    </div></>
+                        <IconMapPin className='h-5 w-5' stroke={1.5} /> {profile.location}
+                    </div>
+                    <div className='text-lg flex gap-1 text-mine-shaft-300 items-center'>
+                        <IconBriefcase className='h-5 w-5' stroke={1.5} />Experience: {profile.totalExp} Years
+                    </div>
+                    </>
                 }
         </>        
 }

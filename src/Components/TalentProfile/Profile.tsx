@@ -23,13 +23,16 @@ const Profile = (props:any) => {
       <div className='relative'>
             <img className='rounded-t-2xl' src='/Profile/banner.jpeg' alt='' />
             <img className='w-48 h-48 rounded-full -bottom-1/3 absolute left-3 border-mine-shaft-950 border-8' 
-            src={profile.picture?`data:image/jpeg;base64,${profile.picture}`:"/Avatar.png"} alt='' />
+            src={profile.picture?`data:image/jpeg;base64,${profile?.picture}`:'/Avatar.png'} alt='' />
         </div>
         <div className='px-3 mt-16'>
             <div className='text-3xl font-semibold flex justify-between'>{profile?.name} <Button color='brightSun.4' variant='light'>Message</Button> </div>
             <div className='text-xl flex gap-1 items-center'> <IconBriefcase className='h-5 w-5' stroke={1.5}/> {profile?.jobTitle} &bull; {profile?.company}</div>
             <div className='text-lg flex gap-1 text-mine-shaft-300 items-center'>
                 <IconMapPin className='h-5 w-5' stroke={1.5}/> {profile?.location}
+            </div>
+            <div className='text-lg flex gap-1 text-mine-shaft-300 items-center'>
+                <IconBriefcase className='h-5 w-5' stroke={1.5}/>Expereince: {profile?.totalExp} Years
             </div>
         </div>
         <Divider mx="xs" my="xl" />

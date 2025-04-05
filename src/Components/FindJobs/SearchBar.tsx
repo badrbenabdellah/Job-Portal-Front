@@ -2,10 +2,17 @@ import React, { useState } from 'react'
 import MultiInput from './MultiInput'
 import { dropdownData } from '../../Data/JobsData'
 import { Divider, RangeSlider } from '@mantine/core';
+import { useDispatch } from 'react-redux';
+import { updateFilter } from '../../Slices/FilterSlice';
 
 
 const SearchBar = () => {
-  const [value, setValue] = useState<[number, number]>([1, 100]);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState<[number, number]>([0, 300]);
+  const handleChange=(event:any)=>{
+    dispatch(updateFilter({salary:event}));
+    
+  }
   return (
     <div className="flex px-5 py-8">
         {
@@ -21,11 +28,13 @@ const SearchBar = () => {
             <div>Salary</div>
             <div>{value[0]}&#8364; LPA - {value[1]}&#8364; LPA</div>
           </div>
-          <RangeSlider color='brightSun.4' size="xs" value={value} labelTransitionProps={{
-          transition: 'skew-down',
-          duration: 150,
-          timingFunction: 'linear',
-        }} onChange={setValue} />
+          <RangeSlider 
+            color='brightSun.4' 
+            size="xs" 
+            value={value} 
+            onChange={setValue}
+            onChangeEnd={handleChange}  
+          />
         </div>
         
     </div>

@@ -9,6 +9,8 @@ const Talent = () => {
   const dispatch = useDispatch();
   const [talents, setTalents] = useState<any[]>([]); // Typage plus précis
   const filter = useSelector((state: any) => state.filter);
+  const talent = useSelector((state: any) => state.sort);
+
   const [filteredTalents, setFilteredTalents] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,7 +33,15 @@ const Talent = () => {
   }, []);
 
   useEffect(() => {
-    try {
+    if (talent === 'Experience: Low to High') {
+      setTalents([...talents].sort((a: any, b: any) => a.totalExp - b.totalExp));
+    } 
+    else if (talent === 'Experience: High to Low') {
+      setTalents([...talents].sort((a: any, b: any) => b.totalExp - a.totalExp));
+    }
+  },[talent])
+
+  useEffect(() => {
       let filterTalent = talents; // Copie du tableau
 
       if (filter.name) {
@@ -72,10 +82,7 @@ const Talent = () => {
       }
 
       setFilteredTalents(filterTalent);
-    } catch (err) {
-      console.error("Filter error:", err);
-      setFilteredTalents([]);
-    }
+    
   }, [filter, talents]);
 
   if (loading) return <div>Loading talents...</div>;
