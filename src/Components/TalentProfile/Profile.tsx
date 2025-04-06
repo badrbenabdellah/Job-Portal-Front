@@ -18,10 +18,10 @@ const Profile = (props:any) => {
     })
   }, [id])
   return (
-    <div className='w-2/3'>
+    <div className='w-4/5'>
       <div className=''>
       <div className='relative'>
-            <img className='rounded-t-2xl' src='/Profile/banner.jpeg' alt='' />
+            <img className='rounded-t-2xl w-full h-48 object-cover' src='/Profile/banner.jpeg' alt='' />
             <img className='w-48 h-48 rounded-full -bottom-1/3 absolute left-3 border-mine-shaft-950 border-8' 
             src={profile.picture?`data:image/jpeg;base64,${profile?.picture}`:'/Avatar.png'} alt='' />
         </div>

@@ -1,15 +1,16 @@
 import { Button, Divider } from '@mantine/core'
 import { IconArrowLeft } from '@tabler/icons-react'
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { profile } from '../Data/TalentData'
-import Profile from '../Components/Profile/Profile'
+import Profile from '../Components/TalentProfile/Profile'
 import RecommendTalent from '../Components/TalentProfile/RecommendTalent'
 import { getAllProfiles } from '../Services/ProfileService'
 
 const TalentProfilePage = () => {
   const navigate = useNavigate();
   const [talents, setTalents] = useState<any[]>([]);
+  const { id } = useParams();
   useEffect(() => {
     getAllProfiles().then((res) => {
       setTalents(res);

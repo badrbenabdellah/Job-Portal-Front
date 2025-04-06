@@ -8,9 +8,11 @@ import { getProfile } from '../../Services/ProfileService';
 import { changeAppStatus } from '../../Services/JobService';
 import { successNotification } from '../../Services/NotificationService';
 import { formatInterviewTime, openBase64PDF } from '../../Services/Utilities';
+import { useSelector } from "react-redux";
 
 const TalentCard = (props:any) => {
     const {id} = useParams();
+    const user = useSelector((state:any) => state.user);
     const ref = useRef<HTMLInputElement>(null);
     const [opened, { open, close }] = useDisclosure(false);
     const [app, { open: openApp, close:closeApp }] = useDisclosure(false);

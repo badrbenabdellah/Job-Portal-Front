@@ -90,7 +90,6 @@ const Jobs = () => {
           }
         </div>
         
-        <JobCard />
     </div>
     
   )

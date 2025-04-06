@@ -8,6 +8,7 @@ import { changeProfile } from '../../Slices/ProfileSlice'
 
 
 const JobCard = (props:any) => {
+    console.log("JobCard Props:", props);
     const dispatch = useDispatch();
     const profile = useSelector((state:any) => state.profile);
     const handleSaveJob = () => {

@@ -17,7 +17,12 @@ const Info = () => {
     const handleClick = () => {
         if(!edit){
             setEdit(true);
-            form.setValues({'jobtitle': profile.jobTitle, 'company': profile.company, 'location': profile.location, 'totalExp': profile.totalExp});
+            form.setValues({
+                jobtitle: profile.jobTitle, 
+                company: profile.company, 
+                location: profile.location, 
+                totalExp: profile.totalExp
+            });
         }
         else setEdit(false);   
     }
@@ -55,22 +60,50 @@ const Info = () => {
             </div>
                 {
                     edit?<><div className='flex gap-10 [&>*]:w-1/2 my-3'>
-                        <SelectInput label="Job Title" form={form} name="jobTitle" {...select[0]}/>
-                        <SelectInput label="Company" form={form} name="company" {...select[1]}/>
+                        <SelectInput 
+                            label="Job Title" 
+                            form={form} 
+                            name="jobTitle" 
+                            {...select[0]}
+                        />
+                        <SelectInput 
+                            label="Company" 
+                            form={form} 
+                            name="company" 
+                            {...select[1]}
+                        />
                     </div>
                     <div className='flex gap-10 [&>*]:w-1/2 my-3'>
-                        <SelectInput label="Location" form={form} name="experience" {...select[2]}/>
-                        <NumberInput label="Expereince" withAsterisk hideControls clampBehavior="strict" min={1} max={50} {...form.getInputProps('totalExp')}/>
+                        <SelectInput 
+                            label="Location" 
+                            form={form} 
+                            name="location" 
+                            {...select[2]}
+                        />
+                        <NumberInput 
+                            label="Expereince" 
+                            withAsterisk 
+                            hideControls 
+                            clampBehavior="strict" 
+                            min={1} 
+                            max={50} 
+                            {...form.getInputProps('totalExp')}
+                        />
                     </div>
                     </>:
                     <>
-                        <div className='text-xl flex gap-1 items-center'> <IconBriefcase className='h-5 w-5' stroke={1.5}/> {profile.jobTitle} &bull; {profile.company}</div>
-                    <div className='text-lg flex gap-1 text-mine-shaft-300 items-center'>
-                        <IconMapPin className='h-5 w-5' stroke={1.5} /> {profile.location}
-                    </div>
-                    <div className='text-lg flex gap-1 text-mine-shaft-300 items-center'>
-                        <IconBriefcase className='h-5 w-5' stroke={1.5} />Experience: {profile.totalExp} Years
-                    </div>
+                        <div className='text-xl flex gap-1 items-center'> 
+                            <IconBriefcase className='h-5 w-5' stroke={1.5}/> 
+                                {profile.jobTitle} &bull; {profile.company}
+                        </div>
+                        <div className='text-lg flex gap-1 text-mine-shaft-300 items-center'>
+                            <IconMapPin className='h-5 w-5' stroke={1.5} /> 
+                            {profile.location}
+                        </div>
+                        <div className='text-lg flex gap-1 text-mine-shaft-300 items-center'>
+                            <IconBriefcase className='h-5 w-5' stroke={1.5} />
+                                Experience: {profile.totalExp} Years
+                        </div>
                     </>
                 }
         </>        
