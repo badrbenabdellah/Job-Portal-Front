@@ -15,6 +15,8 @@ import PostJobPages from "./PostJobPages"
 import Footer from "../Components/Footer/Footer"
 import HomePage from './HomePages';
 import { useSelector } from "react-redux"
+import ProtectedRoute from "../Services/ProtectedRoute"
+import PublicRoute from "../Services/PublicRoute"
 
 
 const AppRoutes=() => {
@@ -25,18 +27,18 @@ const AppRoutes=() => {
                 <Divider size="xs" />
                 <Header />
                 <Routes>
-                    <Route path='/signup' element={user?<Navigate to="/" />:<SignUpPage />}/>
-                    <Route path='/login' element={user?<Navigate to="/" />:<SignUpPage />}/>
+                    <Route path='/signup' element={<PublicRoute><SignUpPage /></PublicRoute>}/>
+                    <Route path='/login' element={<SignUpPage />}/>
                     <Route path='/profile' element={<ProfilePage />}/>
                     <Route path='/find-jobs' element={<FindJobs />}/>
                     <Route path='/jobs/:id' element={<JobDescPage />}/>
                     <Route path='/apply-job/:id' element={<ApplyJobPage />}/>
                     <Route path='/find-talent' element={<FindTalentPage />}/>
                     <Route path='/company/:name' element={<CompanyPage />}/>
-                    <Route path='/posted-job/:id' element={<PostedJobPage />}/>
-                    <Route path='/job-history' element={<JobHistoryPage />}/>
+                    <Route path='/posted-job/:id' element={<ProtectedRoute allowedRoles={['EMPLOYER']}><PostedJobPage /></ProtectedRoute>}/>
+                    <Route path='/job-history' element={<ProtectedRoute allowedRoles={['APPLICANT']}><JobHistoryPage /></ProtectedRoute>}/>
                     <Route path='/talent-profile/:id' element={<TalentProfilePage />}/>
-                    <Route path='/post-job/:id' element={<PostJobPages />}/>
+                    <Route path='/post-job/:id' element={<ProtectedRoute allowedRoles={['EMPLOYER']}><PostJobPages /></ProtectedRoute>}/>
                     <Route path='*' element={<HomePage />}/>
                 </Routes>
                 <Footer />

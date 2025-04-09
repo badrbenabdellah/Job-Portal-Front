@@ -2,18 +2,21 @@ import { Button, LoadingOverlay, PasswordInput, rem, TextInput } from '@mantine/
 import { IconAt, IconLock, } from '@tabler/icons-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../Services/UserService';
+//import { loginUser } from '../../Services/UserService';
 import { loginValidation } from '../../Services/FormValidation';
 import { useDisclosure } from '@mantine/hooks';
 import ResetPassword from './ResetPassword';
 import { useDispatch } from 'react-redux';
 import { errorNotification, successNotification } from '../../Services/NotificationService';
 import { setUser } from '../../Slices/UserSlice';
+import { setJwt } from '../../Slices/JwtSlice';
+import { loginUser } from '../../Services/AuthService';
+import { jwtDecode } from 'jwt-decode';
 
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
-    const dipatch = useDispatch();
+    const dispatch = useDispatch();
     const form= {
         email: "",
         password: "",
@@ -40,9 +43,13 @@ const Login = () => {
             setLoading(true);
             loginUser(data).then((res)=>{
                 successNotification("Login Successful", "Redirecting to home page...");
-                  setTimeout(()=>{
-                    setLoading(false);
-                    dipatch(setUser(res));
+                dispatch(setJwt(res.jwt));
+                const decoded = jwtDecode(res.jwt);
+                dispatch(setUser({...decoded, email:decoded.sub}));
+                setTimeout(()=>{
+                    //dipatch(setUser(res));
+                    //dipatch(setJwt(res.jwt));
+
                     navigate("/")
                   }, 4000)
             }).catch((err)=>{
