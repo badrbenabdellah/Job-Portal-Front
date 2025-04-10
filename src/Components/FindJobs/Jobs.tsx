@@ -80,8 +80,8 @@ const Jobs = () => {
   }, [filter, jobList]);
   return (
     <div className='p-5'>
-        <div className='flex justify-between'>
-            <div className='text-2xl font-semibold'>Recommended Jobs</div>
+        <div className='flex justify-between flex-wrap mt-5'>
+            <div className='text-2xl xs-mx:text-xl font-semibold'>Recommended Jobs</div>
             <Sort sort="job" />
         </div>
         <div className='mt-10 flex flex-wrap gap-5'>
